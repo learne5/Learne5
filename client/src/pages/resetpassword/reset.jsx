@@ -46,7 +46,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/reset-password",
+        "https://learne5.onrender.com/auth/reset-password",
         {
           email: email,
           password: password,
