@@ -36,7 +36,7 @@ export const sendPasswordResetEmail = async (to, resetURL) => {
     },
   });
 
-  const from = "learnify314@gmail.com";
+  const from = "learnify09@gmail.com";
   const subject = "Reset Your Password";
   const html = PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL);
 
@@ -70,7 +70,7 @@ export const sendEmail = async (to, verificationToken) => {
   });
 
 
-  const from = "learnify314@gmail.com";
+  const from = "learnify09@gmail.com";
   const subject = "Verify Your Email Address";
   const html = VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken);
 
@@ -99,7 +99,7 @@ export const sendWelcomeEmail = async (to) => {
     },
   });
 
-  const from = "learnify314@gmail.com";
+  const from = "learnify09@gmail.com";
   const subject = "Welcome To Learnify";
   const html = WELCOME_EMAIL_TEMPLATE;
 
@@ -128,7 +128,7 @@ export const sendResetSuccessEmail = async (to) => {
     },
   });
 
-  const from = "learnify314@gmail.com";
+  const from = "learnify09@gmail.com";
   const subject = "Password Reset Successful";
   const html = PASSWORD_RESET_SUCCESS_TEMPLATE;
 
