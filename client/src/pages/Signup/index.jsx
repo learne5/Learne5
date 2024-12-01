@@ -71,7 +71,7 @@ function Signup() {
                 password,
                 type,
             });
-
+            console.log(response);
             if (response.status === 200) {
                 setMessage('Authenticating your email....');
                 alert('Verification email sent successfully!'); // Alert message for successful verification email
