@@ -32,6 +32,16 @@ const AssignmentView = ({ subject }) => {
     const dueDate = new Date(assignment.dueDate);
     const now = new Date();
 
+    // Validate dueDate and submitDate
+    if (isNaN(dueDate.getTime())) {
+      alert("Invalid due date provided for the assignment.");
+      return "Invalid Due Date";
+    }
+    if (submitDate && isNaN(submitDate.getTime())) {
+      alert("Invalid submission date for the student.");
+      return "Invalid Submission Date";
+    }
+
     if (submitDate) {
       return submitDate > dueDate ? "Submitted late" : "Submitted";
     } else {
@@ -52,56 +62,58 @@ const AssignmentView = ({ subject }) => {
         Assignment Submissions
       </h1>
       <div className="overflow-x-auto">
-        {assignments.length !== 0 && <table className="min-w-full bg-white border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="py-3 px-4 text-left font-semibold text-gray-600 border-b">
-                Student
-              </th>
-              {assignments.map((assignment) => (
-                <th
-                  key={assignment._id}
-                  className="py-3 px-4 text-left font-semibold text-gray-600 border-b"
-                >
-                  {assignment.title}
+        {assignments.length !== 0 && (
+          <table className="min-w-full bg-white border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="py-3 px-4 text-left font-semibold text-gray-600 border-b">
+                  Student
                 </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {students.slice(1).map((student) => (
-              <tr key={student._id} className="hover:bg-gray-50">
-                <td className="py-3 px-4 border-b">{student.username}</td>
                 {assignments.map((assignment) => (
-                  <td
-                    key={`${student._id}-${assignment._id}`}
-                    className="py-3 px-4 border-b"
+                  <th
+                    key={assignment._id}
+                    className="py-3 px-4 text-left font-semibold text-gray-600 border-b"
                   >
-                    <Link
-                      to={downloadWork(assignment, student._id)}
-                      target={downloadWork(assignment, student._id) && "_blank"}
-                      className={`px-2 py-1 rounded-full text-xs font-semibold
+                    {assignment.title}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {students.slice(1).map((student) => (
+                <tr key={student._id} className="hover:bg-gray-50">
+                  <td className="py-3 px-4 border-b">{student.username}</td>
+                  {assignments.map((assignment) => (
+                    <td
+                      key={`${student._id}-${assignment._id}`}
+                      className="py-3 px-4 border-b"
+                    >
+                      <Link
+                        to={downloadWork(assignment, student._id)}
+                        target={downloadWork(assignment, student._id) && "_blank"}
+                        className={`px-2 py-1 rounded-full text-xs font-semibold
                         ${
                           getSubmissionStatus(assignment, student._id) ===
                           "Submitted"
                             ? "bg-green-100 text-green-800"
                             : getSubmissionStatus(assignment, student._id) ===
-                                "Late Submission"
-                              ? "bg-red-100 text-red-800"
-                              : getSubmissionStatus(assignment, student._id) ===
-                                  "Submitted late"
-                                ? "bg-yellow-100 text-yellow-800"
-                                : "bg-gray-100 text-gray-600"
+                              "Late Submission"
+                            ? "bg-red-100 text-red-800"
+                            : getSubmissionStatus(assignment, student._id) ===
+                              "Submitted late"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-gray-100 text-gray-600"
                         }`}
-                    >
-                      {getSubmissionStatus(assignment, student._id)}
-                    </Link>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>}
+                      >
+                        {getSubmissionStatus(assignment, student._id)}
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
