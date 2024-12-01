@@ -65,12 +65,13 @@ function Signup() {
         }
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, {
+            const response = await axios.post("https://learne5.onrender.com/auth/signup", {
                 email,
                 username,
                 password,
                 type,
             });
+            console.log("hi from response");
             console.log(response);
             if (response.status === 200) {
                 setMessage('Authenticating your email....');
