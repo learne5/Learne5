@@ -22,7 +22,7 @@ router.get(
         scope: ["profile", "email"],
     }),
     (req, res) => {
-        const JWT_SECRET = .JWT_SECRET_KEY;
+        const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
         // Check if the user was not found
         if (!req.user) {
