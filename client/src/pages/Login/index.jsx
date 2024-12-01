@@ -33,7 +33,7 @@ function Login() {
         localStorage.setItem("token", token);
         localStorage.setItem("isloggedin", true);
 
-        setMessage("Login successful!");
+        alert("Login successful!");
         window.location.reload("/home");
         navigate("/home"); // Redirect to home
       } else {
