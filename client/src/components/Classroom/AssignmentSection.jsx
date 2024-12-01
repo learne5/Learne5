@@ -79,7 +79,7 @@ const AssignmentSection = ({ subject }) => {
       id: "files",
       label: "Files",
       type: "file",
-      accept: ".pdf,.doc,.docx,.txt",
+      accept: ".pdf,.doc,.docx,.txt,.ppt,.jpg,.png",
       onChange: handleFileUpload,
     },
   ];
