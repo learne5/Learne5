@@ -24,7 +24,7 @@ router.get(
             return res.send(`
                 <script>
                     alert("User not found. Please sign up first.");
-                    window.opener.postMessage({ error: "User not found" }, "http://localhost:3000/login");
+                    window.opener.postMessage({ error: "User not found" }, "process.env.CLIENT_URI/login");
                     window.close();
                 </script>
             `);
@@ -41,7 +41,7 @@ router.get(
                 window.opener.postMessage({
                     user: ${JSON.stringify(user)},
                     token: "${token}"
-                }, "http://localhost:3000");
+                }, "process.env.CLIENT_URI");
                 window.close();
             </script>
         `);

@@ -50,7 +50,7 @@ app.use(express.static("public"));
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'process.env.CLIENT_URI',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true
@@ -119,7 +119,7 @@ export default app;
 
 // app.use(
 //     cors({
-//         origin: "http://localhost:3000",
+//         origin: "process.env.CLIENT_URI",
 //         methods: "GET,POST,PUT,DELETE",
 //         allowedHeaders: [
 //             "Content-Type",

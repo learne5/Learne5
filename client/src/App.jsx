@@ -67,7 +67,7 @@ export default App;
 // //         return;
 // //       }
 
-// //       const response = await axios.get("http://localhost:8080/auth/check-auth", {
+// //       const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/check-auth`, {
 // //         headers: {
 // //           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
 // //         },

@@ -16,7 +16,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/login",
+        `${process.env.REACT_APP_API_URL}/auth/login`,
         { email, password },
         { withCredentials: true } // Ensure cookies are included
       );
@@ -60,14 +60,14 @@ function Login() {
     try {
       // Open the Google OAuth popup
       const authWindow = window.open(
-        "http://localhost:8080/auth/google/callback",
+        `${process.env.REACT_APP_API_URL}/auth/google/callback`,
         "_blank",
         "width=500,height=600"
       );
 
       // Add a message event listener to handle messages from the popup
       const messageListener = (event) => {
-        if (event.origin !== "http://localhost:8080") {
+        if (event.origin !== `${process.env.REACT_APP_API_URL}`) {
           console.error(
             "Received message from an unknown origin:",
             event.origin

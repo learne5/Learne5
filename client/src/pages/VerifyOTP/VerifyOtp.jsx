@@ -32,7 +32,7 @@ const VerifyOtp = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/verify-email",
+        `${process.env.REACT_APP_API_URL}/auth/verify-email`,
         {
           verificationToken: otp,
         }
