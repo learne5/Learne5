@@ -10,7 +10,7 @@ passport.use(
         {
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: `${process.env.BACKEND_URI}/auth/google/callback`,
+            callbackURL: "https://learne5.onrender.com/auth/google/callback",
             scope: ["profile","email"],
             prompt: "select_account consent",
         },

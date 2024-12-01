@@ -32,7 +32,7 @@ const VerifyOtp = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/verify-email`,
+        "https://learne5.onrender.com/auth/verify-email",
         {
           verificationToken: otp,
         }
