@@ -1,2 +1,2 @@
-export const URL = `${process.env.REACT_APP_API_URL}/api/v1`;
-export const clientURL = `${process.env.REACT_APP_API_URL}`;
+export const URL = "https://learne5.onrender.com/api/v1";
+export const clientURL = "https://learne5.onrender.com";

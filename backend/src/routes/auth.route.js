@@ -4,7 +4,12 @@ import { authenticateToken } from "../middlewares/auth.middleware.js"
 import passport from "passport";
 import "../../passport.js"
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv"
 
+dotenv.config({
+    path : "./.env",
+  })
+  
 const router = express.Router();
 
 // router.get("/google", passport.authenticate("google", {scope:
@@ -17,18 +22,19 @@ router.get(
         scope: ["profile", "email"],
     }),
     (req, res) => {
-        const JWT_SECRET = process.env.JWT_SECRET_KEY;
+        const JWT_SECRET = .JWT_SECRET_KEY;
 
         // Check if the user was not found
         if (!req.user) {
             return res.send(`
                 <script>
                     alert("User not found. Please sign up first.");
-                    window.opener.postMessage({ error: "User not found" }, "process.env.CLIENT_URI/login");
+                    window.opener.postMessage({ error: "User not found" }, "${process.env.CLIENT_URI}/login");
                     window.close();
                 </script>
             `);
         }
+        
 
         const user = req.user;
         const token = jwt.sign({ userId: user._id, username: user.username }, JWT_SECRET, {
@@ -41,7 +47,7 @@ router.get(
                 window.opener.postMessage({
                     user: ${JSON.stringify(user)},
                     token: "${token}"
-                }, "process.env.CLIENT_URI");
+                }, "${process.env.CLIENT_URI}");
                 window.close();
             </script>
         `);
