@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import './ForgotPassword.css';
+import React, { useState } from "react";
+import "./ForgotPassword.css";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handlePasswordReset = async (event) => {
     event.preventDefault(); // Prevent form reload
-    setMessage(''); // Clear previous messages
+    setMessage(""); // Clear previous messages
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/forgot-password`, {
-        email: email,
-      });
+      const response = await axios.post(
+        "http://localhost:8080/auth/forgot-password",
+        {
+          email: email,
+        }
+      );
 
       if (response.status === 200) {
         // Clear localStorage and store the email for future reference
@@ -23,17 +26,15 @@ const ForgotPassword = () => {
         localStorage.setItem("email", email);
 
         // Show success message and navigate to the reset page
-        setMessage('A password reset link has been sent to your email.');
+        setMessage("A password reset link has been sent to your email.");
         setTimeout(() => navigate("/reset"), 2000); // Navigate after 2 seconds
       } else {
-        throw new Error('Failed to send reset email.');
+        throw new Error("Failed to send reset email.");
       }
     } catch (error) {
-        alert("The email is not registered. Please check and try again.");
+      alert("The email is not registered. Please check and try again.");
     }
   };
-
-   
 
   return (
     <div className="forgot-password-container">
@@ -48,7 +49,6 @@ const ForgotPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             className="input-email"
-            
           />
           <button type="submit" className="btn-submit">
             Send Reset Link

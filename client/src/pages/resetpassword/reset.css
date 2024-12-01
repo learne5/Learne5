@@ -139,3 +139,25 @@
   color: #34D399; /* Slightly darker green on hover */
   text-decoration: underline;
 }
+
+
+.password-rules {
+  margin-top: 1.5rem;
+  text-align: left;
+  font-size: 14px;
+  color: #94A3B8;
+}
+
+.password-rules label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.password-rules input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.password-rules p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
