@@ -10,7 +10,7 @@ passport.use(
         {
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: "http://:8080/auth/google/callback",
+            callbackURL: `${process.env.BACKEND_URI}/auth/google/callback`,
             scope: ["profile","email"],
             prompt: "select_account consent",
         },
