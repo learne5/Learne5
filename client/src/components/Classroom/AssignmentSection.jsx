@@ -92,7 +92,7 @@ const AssignmentSection = ({ subject }) => {
     const selectedDateTime = new Date(dueDate);
   
     if (selectedDateTime <= currentDateTime) {
-      alert("The due date and time must be in the future.");
+      alert("Date or Time invalid");
       return;
     }
   

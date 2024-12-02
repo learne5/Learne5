@@ -16,13 +16,6 @@ const ClassSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Validate fields
-    if (!title.trim() || !content.trim()) {
-      alert("Both title and content fields are required.");
-      return;
-    }
-  
     try {
       const response = await fetch(`${URL}/announcement/`, {
         method: "POST",
@@ -43,7 +36,7 @@ const ClassSection = () => {
       setContent("");
       setUpdateTrigger((prev) => prev + 1);
     } catch (error) {
-      console.error("Error creating announcement:", error.message);
+      alert("Error creating announcement:", error.message);
     }
   };
   
