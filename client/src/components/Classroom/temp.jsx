@@ -16,13 +16,6 @@ const ClassSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Validate fields
-    if (!title.trim() || !content.trim()) {
-      alert("Both title and content fields are required.");
-      return;
-    }
-  
     try {
       const response = await fetch(`${URL}/announcement/`, {
         method: "POST",
@@ -32,12 +25,12 @@ const ClassSection = () => {
         },
         body: JSON.stringify({ title, content, subject, user }),
       });
-  
+
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message);
       }
-  
+
       setOpen(false);
       setTitle("");
       setContent("");
@@ -46,7 +39,6 @@ const ClassSection = () => {
       console.error("Error creating announcement:", error.message);
     }
   };
-  
 
   const fields = [
     { id: "title", label: "Title", type: "text", value: title, onChange: setTitle },
