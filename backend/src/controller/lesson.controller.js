@@ -94,4 +94,4 @@ const deleteLesson = async (req, res) => {
     }
 }
 
-export { getLessons, insertLesson, updateLesson, deleteLesson };
+export { getLessons, insertLesson, deleteLesson };
