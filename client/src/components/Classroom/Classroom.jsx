@@ -46,6 +46,10 @@ const Classroom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (subjectCode.length !== 6) {
+      alert("Subject code must be exactly 6 characters.");
+      return;
+    }
     try {
       const response = await fetch(`${URL}/class`, {
         method: "POST",
@@ -60,7 +64,7 @@ const Classroom = () => {
         }),
       });
       const data = await response.json();
-      if (!response.ok) throw new Error("Please Enter valid Details");
+      if (!response.ok) throw new Error(data.message);
       const userData = JSON.parse(localStorage.getItem('user'));
         if (userData && data) {
           userData.classCodes.push(data.code);
@@ -101,20 +105,18 @@ const Classroom = () => {
     },
     {
       id: "code",
-      label: "code",
+      label: "Code",
       type: "text",
-      placeholder: "Enter a valid 6-character code",
+      placeholder: "Enter a 6-character subject code",
       value: subjectCode,
       onChange: (value) => {
-        if (value.length === 6) {
-          setSubjectCode(value); // Update state only when the input has exactly 6 characters
-        } else {
-          alert("Please enter a valid 6-character code"); // Display error message
+        if (value.length <= 6) {
+          setSubjectCode(value); // Only update the state if the length is 6 or less
         }
       },
       required: true,
       disabled: false,
-    },    
+    }
   ];
 
   if (!user) {
