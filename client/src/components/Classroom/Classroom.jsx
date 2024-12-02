@@ -60,7 +60,7 @@ const Classroom = () => {
         }),
       });
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message);
+      if (!response.ok) throw new Error("Please Enter valid Details");
       const userData = JSON.parse(localStorage.getItem('user'));
         if (userData && data) {
           userData.classCodes.push(data.code);
@@ -103,12 +103,18 @@ const Classroom = () => {
       id: "code",
       label: "code",
       type: "text",
-      placeholder: "Enter subject code of size 10",
+      placeholder: "Enter a valid 6-character code",
       value: subjectCode,
-      onChange: (value) => setSubjectCode(value),
+      onChange: (value) => {
+        if (value.length === 6) {
+          setSubjectCode(value); // Update state only when the input has exactly 6 characters
+        } else {
+          alert("Please enter a valid 6-character code"); // Display error message
+        }
+      },
       required: true,
       disabled: false,
-    },
+    },    
   ];
 
   if (!user) {

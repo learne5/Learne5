@@ -62,7 +62,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
     </div>
     <div class="footer">
       <p>&copy; 2024 Learnify, Inc. All rights reserved.</p>
-      <p>If you have any questions, feel free to <a href="mailto:learnify09@gmail.com">contact us</a>.</p>
+      <p>If you have any questions, feel free to <a href="mailto:learnify314@gmail.com">contact us</a>.</p>
     </div>
   </div>
 </body>
