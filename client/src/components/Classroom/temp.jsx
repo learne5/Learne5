@@ -16,6 +16,10 @@ const ClassSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  if(!title.trim() || !content.trim()) {
+    alert("Both title and content fields are required.");
+    return;
+  }
     try {
       const response = await fetch(`${URL}/announcement/`, {
         method: "POST",
