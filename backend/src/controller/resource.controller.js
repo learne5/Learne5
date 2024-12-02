@@ -65,20 +65,20 @@ const insertResource = async (req, res) => {
     }
 };
 
-const updateResource = async (req, res) => {
-    try {
-        const updatedResource = await Resource.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        })
-        res.status(200).json(updatedResource)
-    } catch (error) {
-        res.status(400).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const updateResource = async (req, res) => {
+//     try {
+//         const updatedResource = await Resource.findByIdAndUpdate(req.params.id, req.body, {
+//             new: true,
+//             runValidators: true
+//         })
+//         res.status(200).json(updatedResource)
+//     } catch (error) {
+//         res.status(400).json({
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 const deleteResource = async (req, res) => {
 
@@ -97,4 +97,4 @@ const deleteResource = async (req, res) => {
     }
 }
 
-export { getResources, insertResource, deleteResource, updateResource };
+export { getResources, insertResource, deleteResource};

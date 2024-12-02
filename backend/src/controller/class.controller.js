@@ -6,25 +6,25 @@ import { Material } from '../models/material.model.js';
 import { Resource } from '../models/resource.model.js';
 import { Announcement } from '../models/announcement.model.js';
 
-const usedCodes = new Set();
-function generateRandomCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let result = '';
-    for (let i = 0; i < 10; i++) {
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-}
+// const usedCodes = new Set();
+// function generateRandomCode() {
+//     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+//     let result = '';
+//     for (let i = 0; i < 10; i++) {
+//         result += characters.charAt(Math.floor(Math.random() * characters.length));
+//     }
+//     return result;
+// }
 
-function getUniqueCode() {
-    let code;
-    do {
-        code = generateRandomCode();
-    } while (usedCodes.has(code));
+// function getUniqueCode() {
+//     let code;
+//     do {
+//         code = generateRandomCode();
+//     } while (usedCodes.has(code));
 
-    usedCodes.add(code);
-    return code;
-}
+//     usedCodes.add(code);
+//     return code;
+// }
 
 const getClasses = async (req, res) => {
     try {

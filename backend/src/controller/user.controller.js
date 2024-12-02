@@ -52,20 +52,20 @@ const deleteUser = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        })
-        res.status(200).json(updatedUser)
-    } catch (error) {
-        res.status(400).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const updateUser = async (req, res) => {
+//     try {
+//         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+//             new: true,
+//             runValidators: true
+//         })
+//         res.status(200).json(updatedUser)
+//     } catch (error) {
+//         res.status(400).json({
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 const getUser = async (req, res) => {
     try {
@@ -154,7 +154,7 @@ const getStudents = async (req, res) => {
 export {
     insertUser,
     deleteUser,
-    updateUser,
+    //updateUser,
     getUser,
     validateUser,
     joinClass,

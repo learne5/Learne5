@@ -57,29 +57,29 @@ const getAssignments = async (req, res) => {
     }
 };
 
-const deleteAssignment = async (req, res) => {
-    try {
-        const deletedAssignment = await Assignment.findByIdAndDelete(req.params.id)
-        res.status(200).json(deletedAssignment)
-    } catch (error) {
-        res.status(400).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const deleteAssignment = async (req, res) => {
+//     try {
+//         const deletedAssignment = await Assignment.findByIdAndDelete(req.params.id)
+//         res.status(200).json(deletedAssignment)
+//     } catch (error) {
+//         res.status(400).json({
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
-const updateAssignment = async (req, res) => {
-    try {
-        const updatedAssignment = await Assignment.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        res.status(200).json(updatedAssignment)
-    } catch (error) {
-        res.status(400).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const updateAssignment = async (req, res) => {
+//     try {
+//         const updatedAssignment = await Assignment.findByIdAndUpdate(req.params.id, req.body, { new: true })
+//         res.status(200).json(updatedAssignment)
+//     } catch (error) {
+//         res.status(400).json({
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 const submitAssignment = async (req, res) => {
     try {
@@ -167,4 +167,4 @@ const submitWorkDetails = async (req, res) => {
     }
 };
 
-export { insertAssignment,submitWorkDetails, getAssignments,submitAssignment, deleteAssignment, updateAssignment }
+export { insertAssignment,submitWorkDetails, getAssignments,submitAssignment, }

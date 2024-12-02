@@ -63,6 +63,12 @@ const AnnouncementSection = ({ subject, updateTrigger }) => {
         throw new Error("Failed to fetch announcements");
       }
       const data = await response.json();
+  
+      // Check if announcements array is empty
+      if (!data.announcements || data.announcements.length === 0) {
+        alert("Please check missing fields.");
+      }
+      
       setAnnouncements(data.announcements || []);
     } catch (err) {
       console.error("Error fetching announcements:", err);
@@ -71,6 +77,7 @@ const AnnouncementSection = ({ subject, updateTrigger }) => {
       setIsLoading(false);
     }
   };
+  
 
   useEffect(() => {
     fetchData();

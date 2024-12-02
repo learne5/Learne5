@@ -31,7 +31,7 @@ const AssignmentView = ({ subject }) => {
     const submitDate = submission ? new Date(submission.submitdate) : null;
     const dueDate = new Date(assignment.dueDate);
     const now = new Date();
-
+  
     // Validate dueDate and submitDate
     if (isNaN(dueDate.getTime())) {
       alert("Invalid due date provided for the assignment.");
@@ -41,14 +41,20 @@ const AssignmentView = ({ subject }) => {
       alert("Invalid submission date for the student.");
       return "Invalid Submission Date";
     }
-
+  
+    // Alert if the due date is earlier than the current date
+    if (dueDate < now) {
+      alert(
+        `The due date and time for assignment "${assignment.title}" is in the past.`
+      );
+    }
+  
     if (submitDate) {
       return submitDate > dueDate ? "Submitted late" : "Submitted";
     } else {
       return now > dueDate ? "Late Submission" : "No Submission";
     }
   };
-
   const downloadWork = (assignment, studentId) => {
     const submission = assignment.submission.find(
       (sub) => sub.student === studentId

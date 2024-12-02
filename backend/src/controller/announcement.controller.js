@@ -56,58 +56,58 @@ const createAnnouncement = async (req, res) => {
   }
 };
 
-const deleteAnnouncement = async (subject, announcementId) => {
-  const cls = await Class.findOne(subject);
-  if (!cls) {
-    throw new Error('Class not found');
-  }
+// const deleteAnnouncement = async (subject, announcementId) => {
+//   const cls = await Class.findOne(subject);
+//   if (!cls) {
+//     throw new Error('Class not found');
+//   }
 
-  const announcement = cls.announcements.id(announcementId);
-  if (!announcement) {
-    throw new Error('Announcement not found');
-  }
+//   const announcement = cls.announcements.id(announcementId);
+//   if (!announcement) {
+//     throw new Error('Announcement not found');
+//   }
 
-  if (!cls.teacher.equals(req.user._id)) {
-    throw new Error('Only the class teacher can delete announcements');
-  }
+//   if (!cls.teacher.equals(req.user._id)) {
+//     throw new Error('Only the class teacher can delete announcements');
+//   }
 
-  cls.announcements.pull(announcement);
-  await cls.save();
-  return announcement;
-}
+//   cls.announcements.pull(announcement);
+//   await cls.save();
+//   return announcement;
+// }
 
-const updateAnnouncement = async (req, res) => {
-  try {
-    const anid = req.params.id;
-    const { content, user } = req.body;
-    // console.log(anid, content, user);
-    const announcement = await Announcement.findByIdAndUpdate(
-      anid,
-      {
-        $push: {
-          replies: {
-            user: user,
-            content: content
-          }
-        }
-      },
-      { new: true }
-    );
+// const updateAnnouncement = async (req, res) => {
+//   try {
+//     const anid = req.params.id;
+//     const { content, user } = req.body;
+//     // console.log(anid, content, user);
+//     const announcement = await Announcement.findByIdAndUpdate(
+//       anid,
+//       {
+//         $push: {
+//           replies: {
+//             user: user,
+//             content: content
+//           }
+//         }
+//       },
+//       { new: true }
+//     );
 
-    if (!announcement) {
-      return res.status(404).json({ message: "Announcement not found" });
-    }
+//     if (!announcement) {
+//       return res.status(404).json({ message: "Announcement not found" });
+//     }
 
-    res.status(200).json(announcement);
-  } catch (error) {
-    console.error("Error updating announcement:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
+//     res.status(200).json(announcement);
+//   } catch (error) {
+//     console.error("Error updating announcement:", error);
+//     res.status(500).json({ message: "Internal server error" });
+//   }
+// };
 
 export {
   getAnnouncement,
-  updateAnnouncement,
+  //updateAnnouncement,
   createAnnouncement,
-  deleteAnnouncement,
+  //deleteAnnouncement,
 };

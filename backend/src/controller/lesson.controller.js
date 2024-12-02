@@ -67,20 +67,20 @@ const insertLesson = async (req, res) => {
     }
 };
 
-const updateLesson = async (req, res) => {
-    try {
-        const newLesson = await Lesson.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        })
-        res.status(200).json(newLesson)
-    } catch (error) {
-        res.status(401).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const updateLesson = async (req, res) => {
+//     try {
+//         const newLesson = await Lesson.findByIdAndUpdate(req.params.id, req.body, {
+//             new: true,
+//             runValidators: true
+//         })
+//         res.status(200).json(newLesson)
+//     } catch (error) {
+//         res.status(401).json({
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 const deleteLesson = async (req, res) => {
     try {

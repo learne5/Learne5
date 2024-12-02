@@ -49,20 +49,20 @@ const insertMaterial = async (req, res) => {
     }
 }
 
-const updateMaterial = async (req, res) => {
-    try {
-        const newMaterial = await Material.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        })
-        res.status(200).json(newMaterial)
-    } catch (error) {
-        res.status(401).json({
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const updateMaterial = async (req, res) => {
+//     try {
+//         const newMaterial = await Material.findByIdAndUpdate(req.params.id, req.body, {
+//             new: true,
+//             runValidators: true
+//         })
+//         res.status(200).json(newMaterial)
+//     } catch (error) {
+//         res.status(401).json({
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 const deleteMaterial = async (req, res) => {
     try {
@@ -76,4 +76,4 @@ const deleteMaterial = async (req, res) => {
     }
 }
 
-export { getMaterial, insertMaterial, updateMaterial, deleteMaterial };
+export { getMaterial, insertMaterial, deleteMaterial };
